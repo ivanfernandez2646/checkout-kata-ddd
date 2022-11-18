@@ -1,9 +1,6 @@
 {
-  "printWidth": 120,
-  "tabWidth": 2,
+  "printWidth": 140,
   "singleQuote": true,
-  "trailingComma": "none",
-  "semicolons": true,
-  "quoteProps": "as-needed",
-  "arrowParens": "avoid"
+  "tabWidth": 4
 }
+
