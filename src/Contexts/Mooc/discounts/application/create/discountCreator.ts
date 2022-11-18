@@ -1,8 +1,8 @@
-import Discount from '../domain/discount';
-import DiscountAmount from '../domain/discountAmount';
-import DiscountId from '../domain/discountId';
-import DiscountRepository from '../domain/discountRepository';
-import DiscountThreshold from '../domain/discountThreshold';
+import Discount from '../../domain/discount';
+import DiscountAmount from '../../domain/discountAmount';
+import DiscountId from '../../domain/discountId';
+import DiscountRepository from '../../domain/discountRepository';
+import DiscountThreshold from '../../domain/discountThreshold';
 
 export default class DiscountCreator {
     constructor(private readonly _repository: DiscountRepository) {}

@@ -1,5 +1,5 @@
-import DiscountMother from '../domain/discount.mother';
-import DiscountRepositoryMock from '../__mocks__/discountRespository.mock';
+import DiscountMother from '../../domain/discount.mother';
+import DiscountRepositoryMock from '../../__mocks__/discountRespository.mock';
 import DiscountCreator from './discountCreator';
 
 let repository: DiscountRepositoryMock;
