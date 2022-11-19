@@ -1,6 +1,6 @@
-import StringValueObject from '../../shared/domain/stringValueObject';
+import Uuid from '../../shared/domain/uuid';
 
-export default class DiscountId extends StringValueObject {
+export default class DiscountId extends Uuid {
     constructor(value: string) {
         super(value);
     }

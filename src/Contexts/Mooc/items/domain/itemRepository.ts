@@ -1,5 +1,5 @@
 import { Nullable } from '../../shared/nullable';
-import { Item } from './item';
+import Item from './item';
 import ItemId from './itemId';
 
 export default interface ItemRepository {

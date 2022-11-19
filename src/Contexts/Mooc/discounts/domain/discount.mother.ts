@@ -11,7 +11,7 @@ export default class DiscountMother {
         return new Discount(params);
     }
 
-    static random(overwrites?: { id: DiscountId; threshold: DiscountThreshold; amount: DiscountAmount }) {
+    static random(overwrites?: { id?: DiscountId; threshold?: DiscountThreshold; amount?: DiscountAmount }) {
         return new Discount({
             id: overwrites?.id ? overwrites.id : DiscountIdMother.random(),
             threshold: overwrites?.threshold ? overwrites.threshold : DiscountThresholdMother.random(),

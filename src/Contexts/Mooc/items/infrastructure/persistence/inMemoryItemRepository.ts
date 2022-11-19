@@ -1,5 +1,5 @@
 import { Nullable } from '../../../shared/nullable';
-import { Item } from '../../domain/item';
+import Item from '../../domain/item';
 import ItemId from '../../domain/itemId';
 import ItemRepository from '../../domain/itemRepository';
 

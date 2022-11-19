@@ -19,4 +19,6 @@ export default class ItemCreator {
 
         return this._repository.save(item);
     }
+
+    // TODO: ensure item integrity (check if discounts exists)
 }

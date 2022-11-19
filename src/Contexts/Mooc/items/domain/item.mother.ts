@@ -11,7 +11,7 @@ export default class ItemMother {
         return new Item(params);
     }
 
-    static random(overwrites?: { id: ItemId; price: ItemPrice; discountId: DiscountId }) {
+    static random(overwrites?: { id?: ItemId; price?: ItemPrice; discountId?: DiscountId }) {
         return new Item({
             id: overwrites?.id ? overwrites.id : ItemIdMother.random(),
             price: overwrites?.price ? overwrites.price : ItemPriceMother.random(),
