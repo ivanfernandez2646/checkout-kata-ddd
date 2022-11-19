@@ -1,5 +1,5 @@
-import StringValueObject from './stringValueObject';
 import validate from 'uuid-validate';
+import StringValueObject from './stringValueObject';
 
 export default abstract class Uuid extends StringValueObject {
     constructor(value: string) {
