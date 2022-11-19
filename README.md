@@ -1,5 +1,21 @@
-# TypeScript basic skeleton
+Write a program that implements a checkout system of a store. This program takes
+a set of products as string (ABBDBBAC) representing the producs on a basket and returns
+the total amount to pay. Each product has a fixed price, but some have special discounts.
 
-For now, you have all the code example available in this other repository: https://github.com/CodelyTV/typescript-ddd-example
+## Item | Price | Discount
 
-The idea is that we'll move the basic parts (folder structure and bare minimum code to serve as skeleton) to this repository (`typescript-ddd-skeleton`) once we completely finish the `typescript-ddd-example` code. Current progress: ~95%
+A | 50 | 3 for 130
+B | 30 | 2 for 45
+C | 20 |
+D | 15 |
+
+Example results:
+AA >> 100
+AABCDADDCD >> 260
+AAABBBCCCDDD >> 310
+
+TODO:
+
+1. Add more coverage to test
+2. Implement Open API Swagger
+3. Move nullable.ts to shared/domain
