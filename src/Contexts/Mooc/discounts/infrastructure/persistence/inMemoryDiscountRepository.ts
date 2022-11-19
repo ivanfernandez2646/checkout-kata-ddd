@@ -1,7 +1,6 @@
 import { Nullable } from '../../../shared/nullable';
 import Discount from '../../domain/discount';
-import discount from '../../domain/discount';
-import discountId from '../../domain/discountId';
+import DiscountId from '../../domain/discountId';
 import DiscountRepository from '../../domain/discountRepository';
 
 export default class InMemoryDiscountRepository implements DiscountRepository {
@@ -11,14 +10,14 @@ export default class InMemoryDiscountRepository implements DiscountRepository {
         this._discounts = [];
     }
 
-    save(discount: discount): Promise<void> {
+    async save(discount: Discount): Promise<void> {
         return new Promise((res) => {
             this._discounts.push(discount);
             res();
         });
     }
 
-    async search(id: discountId): Promise<Nullable<discount>> {
+    async search(id: DiscountId): Promise<Nullable<Discount>> {
         return new Promise((res) => {
             const discount = this._discounts.find((d) => d.id.equalsTo(id)) || null;
             res(discount);

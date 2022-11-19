@@ -5,8 +5,8 @@ export default class MotherCreator {
         return faker.datatype.number({ min: 0, max });
     }
 
-    static positiveNumber(max?: number): number {
-        return faker.datatype.number({ min: 1, max });
+    static positiveNumber(params?: { max?: number; precision?: number }): number {
+        return faker.datatype.number({ min: 1, max: params?.max, precision: params?.precision });
     }
 
     static zeroOrPositiveNumber(max?: number): number {

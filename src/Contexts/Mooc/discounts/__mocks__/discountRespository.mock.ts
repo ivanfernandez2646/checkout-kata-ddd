@@ -1,7 +1,6 @@
 import { Nullable } from '../../shared/nullable';
 import Discount from '../domain/discount';
 import DiscountId from '../domain/discountId';
-import discountId from '../domain/discountId';
 import DiscountRepository from '../domain/discountRepository';
 
 export default class DiscountRepositoryMock implements DiscountRepository {
@@ -25,7 +24,7 @@ export default class DiscountRepositoryMock implements DiscountRepository {
         expect(this.mockSave).not.toHaveBeenCalled();
     }
 
-    search(id: discountId): Promise<Nullable<Discount>> {
+    search(id: DiscountId): Promise<Nullable<Discount>> {
         return this.mockSearch(id);
     }
 
