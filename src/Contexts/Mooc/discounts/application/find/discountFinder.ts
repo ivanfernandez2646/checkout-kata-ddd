@@ -13,6 +13,6 @@ export default class DiscountFinder {
             throw new Error(`Discount not found. Id: <${id}>`);
         }
 
-        return discount;
+        return discount.toPrimitives();
     }
 }

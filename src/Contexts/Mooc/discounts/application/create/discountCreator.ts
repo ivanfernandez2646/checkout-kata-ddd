@@ -1,11 +1,12 @@
 import Discount from '../../domain/discount';
 import DiscountAmount from '../../domain/discountAmount';
+import DiscountExistsError from '../../domain/discountExistsException';
 import DiscountId from '../../domain/discountId';
 import DiscountRepository from '../../domain/discountRepository';
 import DiscountThreshold from '../../domain/discountThreshold';
 
 export default class DiscountCreator {
-    constructor(private readonly _repository: DiscountRepository) {}
+    constructor(private _repository: DiscountRepository) {}
 
     async run(params: { id: string; threshold: number; amount: number }): Promise<void> {
         const id = new DiscountId(params.id),
@@ -14,7 +15,7 @@ export default class DiscountCreator {
             discount = new Discount({ id: id, threshold: threshold, amount: amount });
 
         if (await this._repository.search(id)) {
-            throw new Error(`Discount already exists: Id <${id}>`);
+            throw new DiscountExistsError(params.id);
         }
 
         return this._repository.save(discount);

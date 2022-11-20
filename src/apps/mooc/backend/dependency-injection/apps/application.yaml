@@ -1,9 +1,20 @@
 services:
+    Contexts.Mooc.discounts.domain.DiscountRepository:
+        class: ../../../../../Contexts/Mooc/discounts/infrastructure/persistence/inMemoryDiscountRepository
+        arguments: []
 
-  Apps.mooc.controllers.StatusGetController:
-    class: ../../controllers/StatusGetController
-    arguments: []
+    Contexts.Mooc.discounts.application.create.DiscountCreator:
+        class: ../../../../../Contexts/Mooc/discounts/application/create/discountCreator
+        arguments: ['@Contexts.Mooc.discounts.domain.DiscountRepository']
 
-  Apps.mooc.controllers.CoursePutController:
-    class: ../../controllers/CoursePutController
-    arguments: [""]
+    Contexts.Mooc.discounts.application.find.DiscountFinder:
+        class: ../../../../../Contexts/Mooc/discounts/application/find/discountFinder
+        arguments: ['@Contexts.Mooc.discounts.domain.DiscountRepository']
+
+    Apps.mooc.controllers.discounts.DiscountPutController:
+        class: ../../controllers/discounts/discountPutController
+        arguments: ['@Contexts.Mooc.discounts.application.create.DiscountCreator']
+
+    Apps.mooc.controllers.discounts.DiscountGetController:
+        class: ../../controllers/discounts/discountGetController
+        arguments: ['@Contexts.Mooc.discounts.application.find.DiscountFinder']
