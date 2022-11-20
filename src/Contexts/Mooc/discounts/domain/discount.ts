@@ -2,6 +2,12 @@ import DiscountAmount from './discountAmount';
 import DiscountId from './discountId';
 import DiscountThreshold from './discountThreshold';
 
+export type DiscountPrimitives = {
+    id: string;
+    threshold: number;
+    amount: number;
+};
+
 export default class Discount {
     readonly id: DiscountId;
 
@@ -21,5 +27,9 @@ export default class Discount {
         this.id = params.id;
         this._threshold = params.threshold;
         this._amount = params.amount;
+    }
+
+    toPrimitives(): DiscountPrimitives {
+        return { id: this.id.value, threshold: this._threshold.value, amount: this._amount.value };
     }
 }
