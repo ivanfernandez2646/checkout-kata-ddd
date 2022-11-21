@@ -44,4 +44,8 @@ export default class MotherCreator {
     static uuid(): string {
         return faker.datatype.uuid();
     }
+
+    static recentDate(): Date {
+        return faker.date.recent();
+    }
 }
