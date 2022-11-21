@@ -14,7 +14,9 @@ describe('PurchaseCreator', () => {
     it('should create a valid purchase', async () => {
         const purchase = PurchaseMother.random();
 
-        await creator.run({ id: purchase.id.value, itemIds: purchase.itemIds?.map((i) => i.value) });
+        repository.whenSearchThenReturn(null);
+
+        await creator.run({ id: purchase.id.value, itemIds: purchase.itemIds?.map((i) => i.value), date: purchase.date.value });
 
         repository.assertSaveHasBeenCalledWith(purchase);
     });
