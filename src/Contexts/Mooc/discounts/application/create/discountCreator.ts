@@ -1,6 +1,6 @@
 import Discount from '../../domain/discount';
 import DiscountAmount from '../../domain/discountAmount';
-import DiscountExistsError from '../../domain/discountExistsException';
+import DiscountExistsException from '../../domain/discountExistsException';
 import DiscountId from '../../domain/discountId';
 import DiscountRepository from '../../domain/discountRepository';
 import DiscountThreshold from '../../domain/discountThreshold';
@@ -15,7 +15,7 @@ export default class DiscountCreator {
             discount = new Discount({ id: id, threshold: threshold, amount: amount });
 
         if (await this._repository.search(id)) {
-            throw new DiscountExistsError(params.id);
+            throw new DiscountExistsException(id);
         }
 
         return this._repository.save(discount);
