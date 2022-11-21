@@ -19,3 +19,5 @@ TODO:
 1. Add more coverage to test
 2. Implement Open API Swagger
 3. Move nullable.ts to shared/domain
+4. Add arranger to clean ddbb after each cucumber test
+5. Add handler for exceptions (apps)
