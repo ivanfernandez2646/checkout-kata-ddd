@@ -18,3 +18,23 @@ services:
     Apps.mooc.controllers.discounts.DiscountGetController:
         class: ../../controllers/discounts/discountGetController
         arguments: ['@Contexts.Mooc.discounts.application.find.DiscountFinder']
+
+    Contexts.Mooc.items.domain.ItemRepository:
+        class: ../../../../../Contexts/Mooc/items/infrastructure/persistence/inMemoryItemRepository
+        arguments: []
+
+    Contexts.Mooc.items.application.create.ItemCreator:
+        class: ../../../../../Contexts/Mooc/items/application/create/itemCreator
+        arguments: ['@Contexts.Mooc.items.domain.ItemRepository']
+
+    Contexts.Mooc.items.application.find.ItemFinder:
+        class: ../../../../../Contexts/Mooc/items/application/find/itemFinder
+        arguments: ['@Contexts.Mooc.items.domain.ItemRepository']
+
+    Apps.mooc.controllers.items.ItemPutController:
+        class: ../../controllers/items/itemPutController
+        arguments: ['@Contexts.Mooc.items.application.create.ItemCreator']
+
+    Apps.mooc.controllers.items.ItemGetController:
+        class: ../../controllers/items/itemGetController
+        arguments: ['@Contexts.Mooc.items.application.find.ItemFinder']
