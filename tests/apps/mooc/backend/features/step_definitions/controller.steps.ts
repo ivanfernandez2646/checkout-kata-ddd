@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { AfterAll, BeforeAll, Given, Then, When } from 'cucumber';
+import { AfterAll, Before, BeforeAll, Given, Then, When } from 'cucumber';
 import request from 'supertest';
 import { MoocBackendApp } from '../../../../../../src/apps/mooc/backend/MoocBackendApp';
 
@@ -34,4 +34,8 @@ BeforeAll(async () => {
 
 AfterAll(async () => {
     await application.stop();
+});
+
+Before('@skip', () => {
+    return 'skipped';
 });
