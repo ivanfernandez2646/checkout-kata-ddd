@@ -1,5 +1,6 @@
 import DiscountId from '../../../discounts/domain/discountId';
 import Item from '../../domain/item';
+import ItemExistsException from '../../domain/itemExistsException';
 import ItemId from '../../domain/itemId';
 import ItemPrice from '../../domain/itemPrice';
 import ItemRepository from '../../domain/itemRepository';
@@ -14,7 +15,7 @@ export default class ItemCreator {
             item = new Item({ id, price, discountId });
 
         if (await this._repository.search(id)) {
-            throw new Error(`Item already exists: Id <${id}>`);
+            throw new ItemExistsException(id);
         }
 
         return this._repository.save(item);

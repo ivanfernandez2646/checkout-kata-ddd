@@ -2,6 +2,11 @@ import DiscountId from '../../discounts/domain/discountId';
 import ItemId from './itemId';
 import ItemPrice from './itemPrice';
 
+export type ItemPrimitives = {
+    id: string;
+    price: number;
+    discountId: string;
+};
 export default class Item {
     readonly id: ItemId;
 
@@ -20,5 +25,9 @@ export default class Item {
         this.id = params.id;
         this._price = params.price;
         this._discountId = params.discountId;
+    }
+
+    toPrimitives(): ItemPrimitives {
+        return { id: this.id.value, price: this.price.value, discountId: this.discountId.value };
     }
 }

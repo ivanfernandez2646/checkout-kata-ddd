@@ -10,7 +10,7 @@ beforeAll(() => {
     finder = new ItemFinder(repository);
 });
 
-describe('ItemCreator', () => {
+describe('ItemFinder', () => {
     it('should throw an error when the item does not exist', async () => {
         const item = ItemMother.random();
 
