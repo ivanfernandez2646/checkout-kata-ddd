@@ -2,7 +2,7 @@ import { Controller } from '../controller';
 import { Request, Response } from 'express';
 import DiscountCreator from '../../../../../Contexts/Mooc/discounts/application/create/discountCreator';
 import httpStatus from 'http-status';
-import DiscountExistsError from '../../../../../Contexts/Mooc/discounts/domain/discountExistsException';
+import DiscountExistsException from '../../../../../Contexts/Mooc/discounts/domain/discountExistsException';
 
 export default class DiscountPutController implements Controller {
     constructor(private _discountCreator: DiscountCreator) {}
@@ -28,7 +28,7 @@ export default class DiscountPutController implements Controller {
             await this._discountCreator.run({ id: String(id), threshold: Number(threshold), amount: Number(amount) });
             res.sendStatus(httpStatus.CREATED);
         } catch (err) {
-            if (err instanceof DiscountExistsError) {
+            if (err instanceof DiscountExistsException) {
                 res.sendStatus(httpStatus.CONFLICT);
             } else {
                 res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);

@@ -2,6 +2,7 @@ import DiscountFinder from '../../../../../Contexts/Mooc/discounts/application/f
 import { Request, Response } from 'express';
 import { Controller } from '../controller';
 import httpStatus from 'http-status';
+import DiscountNotFoundException from '../../../../../Contexts/Mooc/discounts/domain/discountNotFoundException';
 
 export default class DiscountGetController implements Controller {
     constructor(private _discountFinder: DiscountFinder) {}
@@ -18,11 +19,11 @@ export default class DiscountGetController implements Controller {
             const discount = await this._discountFinder.run(id);
             res.status(httpStatus.FOUND).send(discount);
         } catch (err) {
-            // if (err instanceof DiscountExistsError) {
-            //     res.sendStatus(httpStatus.CONFLICT);
-            // } else {
-            //     res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
-            // }
+            if (err instanceof DiscountNotFoundException) {
+                res.sendStatus(httpStatus.NOT_FOUND);
+            } else {
+                res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+            }
         }
     }
 }
