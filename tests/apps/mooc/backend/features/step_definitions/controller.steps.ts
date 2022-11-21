@@ -24,7 +24,6 @@ Then('the response should be empty', () => {
 });
 
 Then('the response should match:', (body: string) => {
-    console.log(body);
     assert.deepStrictEqual(_response.body, JSON.parse(body));
 });
 

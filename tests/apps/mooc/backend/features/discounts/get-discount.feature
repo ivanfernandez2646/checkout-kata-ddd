@@ -16,3 +16,8 @@ Feature: Get discount
         "amount": 9.99
         }
         """
+
+    Scenario: A non existing discount
+        When I send a GET request to "/discounts/d724d4b6-819a-4699-814e-44b0a61795a2"
+        Then the response status code should be 404
+        And the response should be empty
