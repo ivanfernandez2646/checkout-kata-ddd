@@ -25,7 +25,7 @@ export default class DiscountPutController implements Controller {
 
         //TODO: Implement handler for errors
         try {
-            await this._discountCreator.run({ id: String(id), threshold: Number(threshold), amount: Number(amount) });
+            await this._discountCreator.run({ id, threshold: Number(threshold), amount: Number(amount) });
             res.sendStatus(httpStatus.CREATED);
         } catch (err) {
             if (err instanceof DiscountExistsException) {
