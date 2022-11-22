@@ -1,6 +1,7 @@
 import { Nullable } from '../../../shared/nullable';
 import { PurchasePrimitives } from '../../domain/purchase';
 import PurchaseId from '../../domain/purchaseId';
+import PurchaseNotFoundException from '../../domain/purchaseNotFoundException';
 import PurchaseRepository from '../../domain/purchaseRepository';
 
 export default class PurchaseFinder {
@@ -12,7 +13,7 @@ export default class PurchaseFinder {
         const purchase = await this._repository.search(purchaseId);
 
         if (!purchase) {
-            throw new Error(`Purchase not found. Id: <${id}>`);
+            throw new PurchaseNotFoundException(purchaseId);
         }
 
         return purchase.toPrimitives();

@@ -4,6 +4,7 @@ import PurchaseId from './purchaseId';
 
 export type PurchasePrimitives = { id: string; itemIds: string[]; date: Date };
 
+// TODO: create total field and the process to calculate it
 export default class Purchase {
     readonly id: PurchaseId;
 
