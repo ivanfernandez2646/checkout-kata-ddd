@@ -16,16 +16,12 @@ export default class ItemPutController implements Controller {
         }
 
         if (!price || isNaN(price)) {
-            throw new Error('Price not found or it is invalid');
-        }
-
-        if (!discountId) {
-            throw new Error('DiscountId not found or it is invalid');
+            throw new Error('Price is an invalid number');
         }
 
         //TODO: Implement handler for errors
         try {
-            await this._itemCreator.run({ id: String(id), price, discountId: String(discountId) });
+            await this._itemCreator.run({ id, price, discountId });
             res.sendStatus(httpStatus.CREATED);
         } catch (err) {
             if (err instanceof ItemExistsException) {
