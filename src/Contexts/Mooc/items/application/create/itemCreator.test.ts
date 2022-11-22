@@ -14,7 +14,7 @@ describe('ItemCreator', () => {
     it('should create a valid item', async () => {
         const item = ItemMother.random();
 
-        await creator.run({ id: item.id.value, price: item.price.value, discountId: item.discountId.value });
+        await creator.run({ id: item.id.value, price: item.price.value, discountId: item.discountId?.value });
 
         repository.assertSaveHasBeenCalledWith(item);
     });

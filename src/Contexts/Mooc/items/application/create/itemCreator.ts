@@ -8,10 +8,10 @@ import ItemRepository from '../../domain/itemRepository';
 export default class ItemCreator {
     constructor(private readonly _repository: ItemRepository) {}
 
-    async run(params: { id: string; price: number; discountId: string }): Promise<void> {
+    async run(params: { id: string; price: number; discountId?: string }): Promise<void> {
         const id = new ItemId(params.id),
             price = new ItemPrice(params.price),
-            discountId = new DiscountId(params.discountId),
+            discountId = params?.discountId ? new DiscountId(params.discountId) : null,
             item = new Item({ id, price, discountId });
 
         if (await this._repository.search(id)) {
