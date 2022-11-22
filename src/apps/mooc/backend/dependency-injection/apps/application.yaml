@@ -1,4 +1,5 @@
 services:
+    # Discounts
     Contexts.Mooc.discounts.domain.DiscountRepository:
         class: ../../../../../Contexts/Mooc/discounts/infrastructure/persistence/inMemoryDiscountRepository
         arguments: []
@@ -19,6 +20,8 @@ services:
         class: ../../controllers/discounts/discountGetController
         arguments: ['@Contexts.Mooc.discounts.application.find.DiscountFinder']
 
+
+    # Items
     Contexts.Mooc.items.domain.ItemRepository:
         class: ../../../../../Contexts/Mooc/items/infrastructure/persistence/inMemoryItemRepository
         arguments: []
@@ -38,3 +41,25 @@ services:
     Apps.mooc.controllers.items.ItemGetController:
         class: ../../controllers/items/itemGetController
         arguments: ['@Contexts.Mooc.items.application.find.ItemFinder']
+
+
+    # Purchases
+    Contexts.Mooc.purchases.domain.PurchaseRepository:
+        class: ../../../../../Contexts/Mooc/purchases/infrastructure/persistence/inMemoryPurchaseRepository
+        arguments: []
+
+    Contexts.Mooc.purchases.application.create.PurchaseCreator:
+        class: ../../../../../Contexts/Mooc/purchases/application/create/purchaseCreator
+        arguments: ['@Contexts.Mooc.purchases.domain.PurchaseRepository']
+
+    Contexts.Mooc.purchases.application.find.PurchaseFinder:
+        class: ../../../../../Contexts/Mooc/purchases/application/find/purchaseFinder
+        arguments: ['@Contexts.Mooc.purchases.domain.PurchaseRepository']
+
+    Apps.mooc.controllers.purchases.PurchasePutController:
+        class: ../../controllers/purchases/purchasePutController
+        arguments: ['@Contexts.Mooc.purchases.application.create.PurchaseCreator']
+
+    Apps.mooc.controllers.purchases.PurchaseGetController:
+        class: ../../controllers/purchases/purchaseGetController
+        arguments: ['@Contexts.Mooc.purchases.application.find.PurchaseFinder']
