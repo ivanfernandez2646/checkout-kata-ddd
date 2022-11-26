@@ -1,4 +1,4 @@
-import { Nullable } from '../../shared/nullable';
+import { Nullable } from '../../shared/domain/nullable';
 import Purchase from '../domain/purchase';
 import PurchaseId from '../domain/purchaseId';
 import PurchaseRepository from '../domain/purchaseRepository';

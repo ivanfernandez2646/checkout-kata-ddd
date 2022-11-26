@@ -1,4 +1,4 @@
-import { Nullable } from '../../../shared/nullable';
+import { Nullable } from '../../../shared/domain/nullable';
 import { PurchasePrimitives } from '../../domain/purchase';
 import PurchaseId from '../../domain/purchaseId';
 import PurchaseNotFoundException from '../../domain/purchaseNotFoundException';

@@ -1,5 +1,5 @@
 import DiscountId from '../../discounts/domain/discountId';
-import { Nullable } from '../../shared/nullable';
+import { Nullable } from '../../shared/domain/nullable';
 import ItemId from './itemId';
 import ItemPrice from './itemPrice';
 

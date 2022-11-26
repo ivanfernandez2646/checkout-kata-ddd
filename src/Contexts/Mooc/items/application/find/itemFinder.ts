@@ -1,4 +1,4 @@
-import { Nullable } from '../../../shared/nullable';
+import { Nullable } from '../../../shared/domain/nullable';
 import { ItemPrimitives } from '../../domain/item';
 import ItemId from '../../domain/itemId';
 import ItemNotFoundException from '../../domain/itemNotFoundException';

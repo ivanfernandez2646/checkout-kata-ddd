@@ -1,4 +1,4 @@
-import { Nullable } from '../../shared/nullable';
+import { Nullable } from '../../shared/domain/nullable';
 import Discount from './discount';
 import DiscountId from './discountId';
 
