@@ -1,4 +1,9 @@
 services:
+    # EventBus
+    Contexts.Mooc.shared.domain.EventBus:
+        class: ../../../../../Contexts/Mooc/shared/infrastructure/eventBus/inMemoryAsyncEventBus
+        arguments: []
+
     # Discounts
     Contexts.Mooc.discounts.domain.DiscountRepository:
         class: ../../../../../Contexts/Mooc/discounts/infrastructure/persistence/inMemoryDiscountRepository
@@ -6,7 +11,13 @@ services:
 
     Contexts.Mooc.discounts.application.create.DiscountCreator:
         class: ../../../../../Contexts/Mooc/discounts/application/create/discountCreator
-        arguments: ['@Contexts.Mooc.discounts.domain.DiscountRepository']
+        arguments: ['@Contexts.Mooc.discounts.domain.DiscountRepository', '@Contexts.Mooc.shared.domain.EventBus']
+
+    Contexts.discounts.application.create.OnDiscountCreatedSubscriber:
+        class: ../../../../../Contexts/Mooc/discounts/application/create/onDiscountCreatedSubscriber
+        arguments: []
+        tags:
+            - { name: 'domainEventSubscriber' }
 
     Contexts.Mooc.discounts.application.find.DiscountFinder:
         class: ../../../../../Contexts/Mooc/discounts/application/find/discountFinder
@@ -19,7 +30,6 @@ services:
     Apps.mooc.controllers.discounts.DiscountGetController:
         class: ../../controllers/discounts/discountGetController
         arguments: ['@Contexts.Mooc.discounts.application.find.DiscountFinder']
-
 
     # Items
     Contexts.Mooc.items.domain.ItemRepository:
@@ -41,7 +51,6 @@ services:
     Apps.mooc.controllers.items.ItemGetController:
         class: ../../controllers/items/itemGetController
         arguments: ['@Contexts.Mooc.items.application.find.ItemFinder']
-
 
     # Purchases
     Contexts.Mooc.purchases.domain.PurchaseRepository:
